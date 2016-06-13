@@ -491,6 +491,19 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 install(FILES ${CMAKE_SOURCE_DIR}/drivers/focuser/99-perfectstar.rules DESTINATION ${UDEVRULES_INSTALL_DIR})
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
+################ HitecAstro DC Focuser ##################
+
+set(hitecastrodcfocuser_SRCS
+        ${CMAKE_SOURCE_DIR}/drivers/focuser/hitecastrodcfocuser.cpp
+   )
+
+add_executable(indi_hitecastrodcfocuser_focus ${hitecastrodcfocuser_SRCS})
+target_link_libraries(indi_hitecastrodcfocuser_focus indidriver)
+install(TARGETS indi_hitecastrodcfocuser_focus RUNTIME DESTINATION bin )
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+install(FILES ${CMAKE_SOURCE_DIR}/drivers/focuser/99-hitecastrodcfocuser.rules DESTINATION ${UDEVRULES_INSTALL_DIR})
+endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
 ################ JMI Smart Focus Focuser ################
 
 set(smartfocus_SRCS
